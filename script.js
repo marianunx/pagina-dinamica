@@ -5,7 +5,7 @@ function atualizarContador(valor) {
     contador += valor;
     if (contador < 0) {
         contador = 0;
-        alert("O número já está igual a zero.");
+        alert("Contador zerado");
     }
     contadorElemento.innerText = contador;
 }
