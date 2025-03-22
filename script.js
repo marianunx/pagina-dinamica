@@ -1,30 +1,25 @@
-// Variáveis globais
 let contador = 0;
 
-// Seleção de elementos do DOM
 const contadorElemento = document.getElementById("contador");
-const contadorCaracteres = document.getElementById("contadorCaracteres");
-const mensagens = document.getElementById("mensagens");
-const listas = document.getElementById("listas");
-const campoTexto = document.getElementById("campoTexto");
-
-// Função para atualizar o contador de cliques
 function atualizarContador(valor) {
     contador += valor;
     if (contador < 0) {
         contador = 0;
-        alert("O contador já está em zero!");
+        alert("O número já está igual a zero.");
     }
     contadorElemento.innerText = contador;
 }
+const btnIncrementar = document.getElementById("btnIncrementar");
+const btnDecrementar = document.getElementById("btnDecrementar");
 
-// Função para atualizar o contador de caracteres (sem espaços)
+const contadorCaracteres = document.getElementById("contadorCaracteres");
+const campoTexto = document.getElementById("campoTexto");
 function atualizarContadorCaracteres() {
     let textoSemEspacos = campoTexto.value.replace(/\s+/g, "");
     contadorCaracteres.innerText = textoSemEspacos.length;
 }
 
-// Função para adicionar um novo parágrafo com texto digitado
+const mensagens = document.getElementById("mensagens");
 function adicionarTexto(event) {
     if (event.key === "Enter" && campoTexto.value.trim() !== "") {
         let novoParagrafo = document.createElement("p");
@@ -35,12 +30,14 @@ function adicionarTexto(event) {
     }
 }
 
-// Função para adicionar um item a uma lista (ordenada ou não ordenada)
+const listas = document.getElementById("listas");
+const campoLista = document.getElementById("campoLista");
+const tipoLista = document.getElementById("tipoLista");
 function adicionarItemLista() {
-    let tipo = document.getElementById("tipoLista").value; // 'ul' ou 'ol'
-    let textoItem = prompt("Digite o texto do item:");
+    let textoItem = campoLista.value.trim();
+    let tipo = tipoLista.value; 
 
-    if (textoItem) {
+    if (textoItem !== "") {
         let listaExistente = listas.querySelector(tipo);
         
         if (!listaExistente) {
@@ -51,23 +48,27 @@ function adicionarItemLista() {
         let novoItem = document.createElement("li");
         novoItem.innerText = textoItem;
         listaExistente.appendChild(novoItem);
+        campoLista.value = "";
+    } else {
+        alert("Adcione um elemento a lista:");
     }
 }
+const btnAdicionarItem = document.getElementById("btnAdicionarItem");
 
-// Função para resetar tudo
 function resetarTudo() {
     contador = 0;
     contadorElemento.innerText = contador;
     mensagens.innerHTML = "";
     listas.innerHTML = "";
     campoTexto.value = "";
+    campoLista.value = "";
     contadorCaracteres.innerText = "0";
 }
+const btnResetar = document.getElementById("btnResetar");
 
-// Eventos
-document.getElementById("btnIncrementar").addEventListener("click", () => atualizarContador(1));
-document.getElementById("btnDecrementar").addEventListener("click", () => atualizarContador(-1));
+btnIncrementar.addEventListener("click", () => atualizarContador(1));
+btnDecrementar.addEventListener("click", () => atualizarContador(-1));
 campoTexto.addEventListener("input", atualizarContadorCaracteres);
 campoTexto.addEventListener("keypress", adicionarTexto);
-document.getElementById("btnAdicionarItem").addEventListener("click", adicionarItemLista);
-document.getElementById("btnResetar").addEventListener("click", resetarTudo);
+btnAdicionarItem.addEventListener("click", adicionarItemLista);
+btnResetar.addEventListener("click", resetarTudo);

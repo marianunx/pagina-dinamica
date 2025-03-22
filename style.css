@@ -1,4 +1,4 @@
-body {
+body { 
     font-family: Arial, sans-serif;
     text-align: center;
     margin-top: 20px;
@@ -6,15 +6,50 @@ body {
 
 button, input {
     font-size: 18px;
-    margin: 5px;
-    padding: 10px;
+    margin: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+section {
+    margin-bottom: 30px;
 }
 
 input {
     width: 300px;
     text-align: center;
+    border: 1px solid #ccc;
+    padding: 10px;
 }
 
 #mensagens {
     margin-top: 20px;
+    padding: 10px;
+}
+
+#btnIncrementar {
+    background-color: #1b5f1d;
+    color: white;
+}
+
+#btnDecrementar {
+    background-color: #a01f16;
+    color: white;
+}
+
+#btnAdicionarItem {
+    background-color: #0a5796;
+    color: white;
+}
+
+#btnResetar {
+    background-color: #770f0f;
+    color: white;
+}
+
+/* Efeito de hover para melhor interação */
+button:hover {
+    opacity: 0.8;
 }
